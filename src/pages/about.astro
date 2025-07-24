@@ -1,0 +1,219 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { Code, Database, Users, Zap } from 'lucide-react';
+---
+
+<Layout title="About - Vivek G Sindagi">
+  <Navigation />
+  
+  <main class="pt-24 pb-16">
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-br from-primary-50 to-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
+            About Me
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 animate-slide-up">
+            A journey from curiosity to creating impactful solutions
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Story Timeline -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-12 text-center">My Journey</h2>
+          
+          <div class="relative">
+            <!-- Timeline line -->
+            <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-300"></div>
+            
+            <div class="space-y-12">
+              <div class="timeline-item">
+                <div class="timeline-marker">🎯</div>
+                <div class="timeline-content">
+                  <h3 class="text-xl font-bold mb-2">Product-Led Growth (2025)</h3>
+                  <p class="text-gray-600 mb-4">
+                    Currently focusing on building data-driven products that scale. Working on advanced analytics platforms 
+                    and real-time processing systems that handle millions of events daily.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Apache Spark</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">TypeScript</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-marker">💼</div>
+                <div class="timeline-content">
+                  <h3 class="text-xl font-bold mb-2">Data Engineering Intern - TechCorp (2024)</h3>
+                  <p class="text-gray-600 mb-4">
+                    Designed and implemented ETL pipelines that reduced data processing time by 40%. 
+                    Built monitoring dashboards and automated testing frameworks for data quality assurance.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">Airflow</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">AWS</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-marker">🚀</div>
+                <div class="timeline-content">
+                  <h3 class="text-xl font-bold mb-2">The Dev Journey Begins (2022)</h3>
+                  <p class="text-gray-600 mb-4">
+                    Started my coding journey with a deep dive into full-stack development. 
+                    Built my first major project - a task management app that taught me the fundamentals 
+                    of both frontend and backend development.
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">HTML/CSS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Philosophy Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-12 text-center">Developer Philosophy</h2>
+          
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="philosophy-card">
+              <Code className="w-8 h-8 text-primary-600 mb-4" />
+              <h3 class="text-xl font-bold mb-3">Clean & Maintainable Code</h3>
+              <p class="text-gray-600">
+                I believe in writing code that tells a story. Every function, variable, and comment should 
+                contribute to a clear narrative that future developers (including myself) can easily follow.
+              </p>
+            </div>
+            
+            <div class="philosophy-card">
+              <Database className="w-8 h-8 text-primary-600 mb-4" />
+              <h3 class="text-xl font-bold mb-3">Data-Driven Decisions</h3>
+              <p class="text-gray-600">
+                Every architectural choice and optimization is backed by metrics. I use tools like Hotjar 
+                and Google Analytics to understand user behavior and make informed improvements.
+              </p>
+            </div>
+            
+            <div class="philosophy-card">
+              <Users className="w-8 h-8 text-primary-600 mb-4" />
+              <h3 class="text-xl font-bold mb-3">Collaboration First</h3>
+              <p class="text-gray-600">
+                Great software is built by teams, not individuals. I prioritize clear communication, 
+                thorough documentation, and knowledge sharing to help teams move fast together.
+              </p>
+            </div>
+            
+            <div class="philosophy-card">
+              <Zap className="w-8 h-8 text-primary-600 mb-4" />
+              <h3 class="text-xl font-bold mb-3">Ship Fast, Learn Faster</h3>
+              <p class="text-gray-600">
+                I believe in rapid iteration and continuous learning. Build MVPs, gather feedback, 
+                and iterate based on real user needs rather than assumptions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Experimentation Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-12 text-center">Experimentation & Iteration</h2>
+          
+          <div class="space-y-8">
+            <div class="experiment-card">
+              <h3 class="text-xl font-bold mb-3">Chart Library Performance Optimization</h3>
+              <p class="text-gray-600 mb-4">
+                Swapped from Chart.js to D3.js for a high-frequency trading dashboard, resulting in 
+                60% faster rendering times and smoother animations for real-time data updates.
+              </p>
+              <div class="flex items-center gap-4 text-sm text-gray-500">
+                <span>Before: 150ms render time</span>
+                <span>→</span>
+                <span>After: 60ms render time</span>
+              </div>
+            </div>
+            
+            <div class="experiment-card">
+              <h3 class="text-xl font-bold mb-3">User Interface Optimization</h3>
+              <p class="text-gray-600 mb-4">
+                Used Hotjar heatmaps to identify pain points in our admin dashboard. Moved frequently 
+                used actions to the top navigation, reducing average task completion time by 25%.
+              </p>
+              <div class="flex items-center gap-4 text-sm text-gray-500">
+                <span>User satisfaction: 3.2/5</span>
+                <span>→</span>
+                <span>User satisfaction: 4.1/5</span>
+              </div>
+            </div>
+            
+            <div class="experiment-card">
+              <h3 class="text-xl font-bold mb-3">Internal Tooling for Productivity</h3>
+              <p class="text-gray-600 mb-4">
+                Built a custom CLI tool that automated repetitive database migrations and deployments, 
+                saving the team 2 hours per week and reducing human error in production releases.
+              </p>
+              <div class="flex items-center gap-4 text-sm text-gray-500">
+                <span>Manual process: 30 min</span>
+                <span>→</span>
+                <span>Automated: 2 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  .timeline-item {
+    @apply relative flex items-start gap-6 animate-slide-up;
+  }
+  
+  .timeline-marker {
+    @apply w-16 h-16 rounded-full bg-primary-100 flex items-center justify-center text-2xl font-bold flex-shrink-0 relative z-10;
+  }
+  
+  .timeline-content {
+    @apply flex-1 pb-8;
+  }
+  
+  .skill-tag {
+    @apply text-sm bg-primary-50 text-primary-700 px-3 py-1 rounded-full;
+  }
+  
+  .philosophy-card {
+    @apply bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 animate-scale-in;
+  }
+  
+  .experiment-card {
+    @apply bg-gray-50 p-6 rounded-xl border border-gray-200 hover:border-primary-200 transition-all duration-300;
+  }
+</style>

@@ -1,0 +1,218 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { ArrowRight, Github, ExternalLink, Code, Database, Globe, Zap } from 'lucide-react';
+
+const projects = [
+  {
+    id: 'data-pipeline',
+    title: "Real-time Data Pipeline Platform",
+    description: "Built a unified pipeline in PySpark to reduce processing time by 40%",
+    longDescription: "A comprehensive data processing platform that handles millions of events daily, with real-time monitoring and automated scaling.",
+    problem: "Manual data processing was creating bottlenecks and inconsistencies in our analytics pipeline.",
+    approach: "Designed a distributed system using Apache Spark, Kafka, and Docker for scalable data processing.",
+    solution: "Implemented automated ETL pipelines with monitoring dashboards and error handling.",
+    outcome: "40% reduction in processing time, 99.9% uptime, and eliminated manual intervention.",
+    stack: ["Python", "Apache Spark", "Kafka", "Docker", "PostgreSQL", "Redis"],
+    image: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=800",
+    github: "https://github.com/alexchen/data-pipeline",
+    demo: "https://data-pipeline-demo.com",
+    category: "Data Engineering"
+  },
+  {
+    id: 'analytics-dashboard',
+    title: "E-commerce Analytics Dashboard",
+    description: "React-based dashboard with real-time metrics and advanced filtering",
+    longDescription: "A comprehensive analytics platform providing real-time insights into e-commerce performance with advanced filtering and visualization capabilities.",
+    problem: "Stakeholders needed real-time visibility into sales performance and customer behavior.",
+    approach: "Built a responsive React dashboard with optimized database queries and caching strategies.",
+    solution: "Implemented real-time updates, interactive charts, and customizable reporting features.",
+    outcome: "2.3x improvement in query performance and 50% reduction in time-to-insight.",
+    stack: ["React", "TypeScript", "PostgreSQL", "Chart.js", "Node.js", "WebSocket"],
+    image: "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800",
+    github: "https://github.com/alexchen/analytics-dashboard",
+    demo: "https://analytics-dashboard-demo.com",
+    category: "Frontend"
+  },
+  {
+    id: 'microservices',
+    title: "Microservices Architecture",
+    description: "Scalable backend system handling 100k+ daily requests",
+    longDescription: "A distributed microservices architecture designed for high availability and scalability, handling complex business logic across multiple domains.",
+    problem: "Monolithic architecture was becoming difficult to maintain and scale.",
+    approach: "Decomposed into microservices with proper service boundaries and communication patterns.",
+    solution: "Implemented API gateway, service discovery, and distributed monitoring.",
+    outcome: "99.9% uptime, 3x faster deployment cycles, and improved team productivity.",
+    stack: ["Node.js", "Express", "Redis", "AWS", "Docker", "Kubernetes"],
+    image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
+    github: "https://github.com/alexchen/microservices",
+    demo: "https://microservices-demo.com",
+    category: "Backend"
+  },
+  {
+    id: 'ml-pipeline',
+    title: "Machine Learning Pipeline",
+    description: "Automated ML pipeline with model training and deployment",
+    longDescription: "End-to-end machine learning pipeline with automated training, validation, and deployment workflows.",
+    problem: "Manual ML model deployment was time-consuming and error-prone.",
+    approach: "Built MLOps pipeline with automated testing and continuous deployment.",
+    solution: "Implemented model versioning, A/B testing, and automated rollback mechanisms.",
+    outcome: "75% reduction in deployment time and improved model performance tracking.",
+    stack: ["Python", "TensorFlow", "Kubernetes", "MLflow", "Apache Airflow"],
+    image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800",
+    github: "https://github.com/alexchen/ml-pipeline",
+    demo: "https://ml-pipeline-demo.com",
+    category: "Machine Learning"
+  }
+];
+
+const categories = ["All", "Data Engineering", "Frontend", "Backend", "Machine Learning"];
+---
+
+<Layout title="Projects - Vivek G Sindagi">
+  <Navigation />
+  
+  <main class="pt-24 pb-16">
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-br from-primary-50 to-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
+            My Projects
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 animate-slide-up">
+            Real-world solutions that demonstrate expertise in full-stack development and data engineering
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Filter Section -->
+    <section class="py-8 bg-white border-b border-gray-200">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap justify-center gap-4">
+          {categories.map((category) => (
+            <button class="filter-btn" data-category={category}>
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+    
+    <!-- Projects Grid -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <article class="project-card" data-category={project.category} style={`animation-delay: ${index * 0.1}s`}>
+              <div class="relative overflow-hidden rounded-lg mb-6 group">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div class="flex gap-2">
+                    <a href={project.github} class="btn-icon-white">
+                      <Github className="w-5 h-5" />
+                    </a>
+                    <a href={project.demo} class="btn-icon-white">
+                      <ExternalLink className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-primary-600 bg-primary-50 px-2 py-1 rounded">
+                    {project.category}
+                  </span>
+                  <div class="flex items-center gap-2">
+                    {project.category === 'Data Engineering' && <Database className="w-4 h-4 text-gray-500" />}
+                    {project.category === 'Frontend' && <Globe className="w-4 h-4 text-gray-500" />}
+                    {project.category === 'Backend' && <Code className="w-4 h-4 text-gray-500" />}
+                    {project.category === 'Machine Learning' && <Zap className="w-4 h-4 text-gray-500" />}
+                  </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-2 hover:text-primary-600 transition-colors">
+                  {project.title}
+                </h3>
+                <p class="text-gray-600 mb-4">{project.longDescription}</p>
+              </div>
+              
+              <div class="flex flex-wrap gap-2 mb-6">
+                {project.stack.map((tech) => (
+                  <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              
+              <a href={`/projects/${project.id}`} class="btn-primary">
+                Read Case Study
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  .filter-btn {
+    @apply px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 transition-all font-medium;
+  }
+  
+  .filter-btn.active {
+    @apply bg-primary-600 text-white border-primary-600;
+  }
+  
+  .project-card {
+    @apply bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary-200 animate-slide-up;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors font-medium inline-flex items-center;
+  }
+  
+  .btn-icon-white {
+    @apply bg-white/20 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-white/30 transition-all;
+  }
+</style>
+
+<script>
+  // Filter functionality
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+  
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.getAttribute('data-category');
+      
+      // Update active button
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      
+      // Filter projects
+      projectCards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        if (category === 'All' || cardCategory === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+  
+  // Set initial active state
+  filterButtons[0].classList.add('active');
+</script>
