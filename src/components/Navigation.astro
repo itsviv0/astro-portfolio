@@ -14,7 +14,6 @@ const currentPath = Astro.url.pathname;
         <a href="/about" class={`nav-link ${currentPath === '/about' ? 'active' : ''}`}>About</a>
         <a href="/projects" class={`nav-link ${currentPath === '/projects' ? 'active' : ''}`}>Projects</a>
         <a href="/blog" class={`nav-link ${currentPath === '/blog' ? 'active' : ''}`}>Blog</a>
-        <a href="/contact" class={`nav-link ${currentPath === '/contact' ? 'active' : ''}`}>Contact</a>
       </div>
       
       <div class="hidden md:flex items-center space-x-3">
@@ -41,7 +40,6 @@ const currentPath = Astro.url.pathname;
           <a href="/about" class="mobile-nav-link">About</a>
           <a href="/projects" class="mobile-nav-link">Projects</a>
           <a href="/blog" class="mobile-nav-link">Blog</a>
-          <a href="/contact" class="mobile-nav-link">Contact</a>
         </div>
         <div class="flex flex-col space-y-2 mt-4 pt-4 border-t border-gray-200/50">
           <a href="/resume" class="btn-secondary-mobile">Resume</a>
