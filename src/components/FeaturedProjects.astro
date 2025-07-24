@@ -1,0 +1,114 @@
+---
+import { ArrowRight, Github, ExternalLink } from 'lucide-react';
+
+const projects = [
+  {
+    title: "Real-time Data Pipeline Platform",
+    description: "Built a unified pipeline in PySpark to reduce processing time by 40%",
+    impact: "40% faster processing",
+    stack: ["Python", "Apache Spark", "Kafka", "Docker"],
+    image: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=800",
+    link: "/projects/data-pipeline"
+  },
+  {
+    title: "E-commerce Analytics Dashboard",
+    description: "React-based dashboard with real-time metrics and advanced filtering",
+    impact: "2.3x query performance",
+    stack: ["React", "TypeScript", "PostgreSQL", "Chart.js"],
+    image: "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800",
+    link: "/projects/analytics-dashboard"
+  },
+  {
+    title: "Microservices Architecture",
+    description: "Scalable backend system handling 100k+ daily requests",
+    impact: "99.9% uptime achieved",
+    stack: ["Node.js", "Express", "Redis", "AWS"],
+    image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
+    link: "/projects/microservices"
+  }
+];
+---
+
+<section class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Real-world solutions that demonstrate my expertise in full-stack development and data engineering
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-3 gap-8">
+      {projects.map((project, index) => (
+        <div class="project-card group" style={`animation-delay: ${index * 0.1}s`}>
+          <div class="relative overflow-hidden rounded-lg mb-6">
+            <img 
+              src={project.image} 
+              alt={project.title}
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </div>
+          
+          <div class="mb-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-sm font-medium text-primary-600 bg-primary-50 px-2 py-1 rounded">
+                {project.impact}
+              </span>
+            </div>
+            <h3 class="text-xl font-bold mb-2 group-hover:text-primary-600 transition-colors">
+              {project.title}
+            </h3>
+            <p class="text-gray-600 mb-4">{project.description}</p>
+          </div>
+          
+          <div class="flex flex-wrap gap-2 mb-6">
+            {project.stack.map((tech) => (
+              <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
+                {tech}
+              </span>
+            ))}
+          </div>
+          
+          <div class="flex gap-3">
+            <a href={project.link} class="btn-primary flex-1 text-center">
+              Read Case Study
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="#" class="btn-icon">
+              <Github className="w-5 h-5" />
+            </a>
+            <a href="#" class="btn-icon">
+              <ExternalLink className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12">
+      <a href="/projects" class="btn-secondary-large">
+        View All Projects
+        <ArrowRight className="w-5 h-5 ml-2" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-card {
+    @apply bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary-200 animate-slide-up;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium inline-flex items-center;
+  }
+  
+  .btn-icon {
+    @apply p-2 border border-gray-300 rounded-lg hover:border-primary-600 hover:text-primary-600 transition-colors;
+  }
+  
+  .btn-secondary-large {
+    @apply border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:border-primary-600 hover:text-primary-600 transition-all font-medium text-lg inline-flex items-center;
+  }
+</style>
