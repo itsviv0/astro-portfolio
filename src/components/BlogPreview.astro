@@ -29,19 +29,27 @@ const posts = [
 ];
 ---
 
-<section class="py-16 bg-gray-50">
-  <div class="container mx-auto px-4">
+<section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative">
+  <!-- Background decoration -->
+  <div class="absolute top-10 left-10 w-64 h-64 bg-primary-100 rounded-full blur-3xl opacity-20"></div>
+  <div class="absolute bottom-10 right-10 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-15"></div>
+  
+  <div class="container mx-auto px-6 lg:px-8 relative">
     <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Latest Insights</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">
+      <div class="inline-flex items-center bg-white/80 backdrop-blur-sm text-gray-700 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-sm">
+        <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+        Fresh Content
+      </div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">Latest Insights</h2>
+      <p class="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
         Thoughts on software development, data engineering, and lessons learned from building production systems
       </p>
     </div>
     
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid lg:grid-cols-3 gap-8 lg:gap-10">
       {posts.map((post, index) => (
-        <article class="blog-card" style={`animation-delay: ${index * 0.1}s`}>
-          <div class="flex items-center gap-4 text-sm text-gray-500 mb-3">
+        <article class="blog-card group" style={`animation-delay: ${index * 0.15}s`}>
+          <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
             <div class="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
               {new Date(post.date).toLocaleDateString('en-US', { 
@@ -56,32 +64,32 @@ const posts = [
             </div>
           </div>
           
-          <h3 class="text-xl font-bold mb-3 hover:text-primary-600 transition-colors">
+          <h3 class="text-xl lg:text-2xl font-bold mb-4 group-hover:text-primary-600 transition-colors leading-tight">
             <a href={post.link}>{post.title}</a>
           </h3>
           
-          <p class="text-gray-600 mb-4">{post.excerpt}</p>
+          <p class="text-gray-600 mb-6 leading-relaxed">{post.excerpt}</p>
           
           <div class="flex flex-wrap gap-2 mb-4">
             {post.tags.map((tag) => (
-              <span class="text-xs bg-primary-50 text-primary-700 px-2 py-1 rounded-full">
+              <span class="text-xs bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full font-medium hover:bg-primary-100 transition-colors">
                 {tag}
               </span>
             ))}
           </div>
           
-          <a href={post.link} class="text-primary-600 font-medium hover:text-primary-700 transition-colors inline-flex items-center">
+          <a href={post.link} class="text-primary-600 font-semibold hover:text-primary-700 transition-colors inline-flex items-center group/link mt-auto">
             Read More
-            <ArrowRight className="w-4 h-4 ml-1" />
+            <ArrowRight className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform" />
           </a>
         </article>
       ))}
     </div>
     
-    <div class="text-center mt-12">
-      <a href="/blog" class="btn-secondary-large">
+    <div class="text-center mt-16">
+      <a href="/blog" class="btn-secondary-large group">
         View All Posts
-        <ArrowRight className="w-5 h-5 ml-2" />
+        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
       </a>
     </div>
   </div>
@@ -89,10 +97,10 @@ const posts = [
 
 <style>
   .blog-card {
-    @apply bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary-200 animate-slide-up;
+    @apply bg-white/80 backdrop-blur-sm p-6 lg:p-8 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-500 border border-gray-200/50 hover:border-primary-200 animate-slide-up transform hover:-translate-y-2 flex flex-col;
   }
   
   .btn-secondary-large {
-    @apply border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:border-primary-600 hover:text-primary-600 transition-all font-medium text-lg inline-flex items-center;
+    @apply border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl hover:border-primary-600 hover:text-primary-600 hover:bg-primary-50 transition-all duration-300 font-semibold text-lg inline-flex items-center transform hover:scale-105 bg-white/80 backdrop-blur-sm;
   }
 </style>

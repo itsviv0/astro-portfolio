@@ -2,26 +2,40 @@
 import { ArrowRight, Download } from 'lucide-react';
 ---
 
-<section class="pt-24 pb-16 bg-gradient-to-br from-gray-50 to-gray-100">
-  <div class="container mx-auto px-4">
-    <div class="max-w-4xl mx-auto text-center">
+<section class="pt-32 pb-20 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+  <!-- Background decoration -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+  <div class="absolute top-20 right-10 w-72 h-72 bg-primary-100 rounded-full blur-3xl opacity-20 animate-pulse-subtle"></div>
+  <div class="absolute bottom-20 left-10 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-15 animate-pulse-subtle" style="animation-delay: 1s"></div>
+  
+  <div class="container mx-auto px-6 lg:px-8 relative">
+    <div class="max-w-5xl mx-auto text-center">
       <div class="animate-fade-in">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+        <div class="inline-flex items-center bg-primary-50 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-8 animate-bounce-subtle">
+          <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+          Available for new opportunities
+        </div>
+        
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-8 leading-tight">
           Hi, I'm <span class="text-primary-600">Vivek G Sindagi</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-600 mb-4">
-          Software Developer based in Bengaluru
-        </p>
-        <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
-          I craft robust data pipelines, scalable backend systems, and thoughtful UIs that solve real-world problems.
+        
+        <p class="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 font-medium">
+          Software Developer based in <span class="text-gray-800">Bengaluru</span>
         </p>
         
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <p class="text-lg md:text-xl lg:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed">
+          I craft <span class="font-semibold text-gray-900">robust data pipelines</span>, 
+          <span class="font-semibold text-gray-900">scalable backend systems</span>, and 
+          <span class="font-semibold text-gray-900">thoughtful UIs</span> that solve real-world problems.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
           <a href="/projects" class="btn-primary-large group">
             View My Work
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </a>
-          <a href="/resume" class="btn-secondary-large">
+          <a href="/resume" class="btn-secondary-large group">
             <Download className="w-5 h-5 mr-2" />
             Download Resume
           </a>
@@ -29,37 +43,49 @@ import { ArrowRight, Download } from 'lucide-react';
       </div>
       
       <!-- Credibility Section -->
-      <div class="animate-slide-up">
-        <p class="text-gray-600 mb-6">Trusted by teams at</p>
-        <div class="flex flex-wrap justify-center items-center gap-8 opacity-60">
+      <div class="animate-slide-up" style="animation-delay: 0.3s">
+        <p class="text-gray-500 mb-8 text-sm uppercase tracking-wider font-medium">Trusted by teams at</p>
+        <div class="flex flex-wrap justify-center items-center gap-12 lg:gap-16">
           <div class="company-logo">
-            <span class="text-2xl font-bold text-gray-700">TechCorp</span>
+            <span class="text-2xl lg:text-3xl font-bold text-gray-400 hover:text-gray-700">TechCorp</span>
           </div>
           <div class="company-logo">
-            <span class="text-2xl font-bold text-gray-700">DataFlow</span>
+            <span class="text-2xl lg:text-3xl font-bold text-gray-400 hover:text-gray-700">DataFlow</span>
           </div>
           <div class="company-logo">
-            <span class="text-2xl font-bold text-gray-700">InnovateLabs</span>
+            <span class="text-2xl lg:text-3xl font-bold text-gray-400 hover:text-gray-700">InnovateLabs</span>
           </div>
           <div class="company-logo">
-            <span class="text-2xl font-bold text-gray-700">StartupX</span>
+            <span class="text-2xl lg:text-3xl font-bold text-gray-400 hover:text-gray-700">StartupX</span>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-subtle">
+    <div class="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
+      <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
     </div>
   </div>
 </section>
 
 <style>
   .btn-primary-large {
-    @apply bg-primary-600 text-white px-8 py-4 rounded-lg hover:bg-primary-700 transition-all font-medium text-lg inline-flex items-center hover:shadow-lg hover:scale-105;
+    @apply bg-primary-600 text-white px-8 py-4 rounded-xl hover:bg-primary-700 transition-all duration-300 font-semibold text-lg inline-flex items-center hover:shadow-xl hover:shadow-primary-600/25 hover:scale-105 transform;
   }
   
   .btn-secondary-large {
-    @apply border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:border-primary-600 hover:text-primary-600 transition-all font-medium text-lg inline-flex items-center hover:shadow-lg;
+    @apply border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl hover:border-primary-600 hover:text-primary-600 hover:bg-primary-50 transition-all duration-300 font-semibold text-lg inline-flex items-center hover:shadow-lg transform hover:scale-105;
   }
   
   .company-logo {
-    @apply hover:opacity-100 transition-opacity cursor-pointer;
+    @apply transition-all duration-300 cursor-pointer transform hover:scale-110;
+  }
+  
+  .bg-grid-pattern {
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 20px 20px;
   }
 </style>
