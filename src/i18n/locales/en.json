@@ -15,13 +15,15 @@
     "buttons": {
       "viewWork": "View My Work",
       "downloadCV": "Download CV"
-    }
+    },
+    "trustedBy": "Trusted by teams at"
   },
   "about": {
     "title": "About Me",
     "description": "Software Developer & Data Engineer based in Bengaluru. I craft robust data pipelines, scalable backend systems, and thoughtful UIs."
   },
   "projects": {
+    "pip": "Recent Projects",
     "title": "Featured Projects",
     "subtitle": "Here are some of my recent projects that showcase my skills and experience.",
     "viewAll": "View All Projects",

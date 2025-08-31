@@ -15,13 +15,15 @@
     "buttons": {
       "viewWork": "Meine Arbeit ansehen",
       "downloadCV": "Lebenslauf herunterladen"
-    }
+    },
+    "trustedBy": "Vertraut von Teams bei"
   },
   "about": {
     "title": "Über mich",
     "description": "Software-Entwickler & Dateningenieur in Bengaluru. Ich entwickle robuste Datenpipelines, skalierbare Backend-Systeme und durchdachte Benutzeroberflächen."
   },
   "projects": {
+    "pip": "Aktuelle Projekte",
     "title": "Ausgewählte Projekte",
     "subtitle": "Hier sind einige meiner aktuellen Projekte, die meine Fähigkeiten und Erfahrungen zeigen.",
     "viewAll": "Alle Projekte anzeigen",
