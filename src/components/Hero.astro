@@ -1,5 +1,9 @@
 ---
 import { ArrowRight, Download } from "lucide-react";
+import { getLangFromUrl, useTranslations } from "../i18n/index.js";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section
@@ -25,46 +29,49 @@ import { ArrowRight, Download } from "lucide-react";
         >
           <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"
           ></span>
-          Available for new opportunities
+          {t("hero.available")}
         </div>
 
         <h1
           class="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-8 leading-tight"
         >
-          Hi, I'm <span class="text-primary-600">Vivek Sindagi</span>
+          {t("hero.greeting")}
+          <span class="text-primary-600">Vivek Sindagi</span>
         </h1>
 
         <p
           class="text-xl md:text-2xl lg:text-3xl text-gray-600 mb-6 font-medium"
         >
-          Software Developer based in <span class="text-gray-800"
-            >Bengaluru</span
-          >
+          {t("hero.title")}
+          <span class="text-gray-800">{t("hero.location")}</span>
         </p>
 
         <p
           class="text-lg md:text-xl lg:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed"
         >
-          I craft <span class="font-semibold text-gray-900"
-            >robust data pipelines</span
-          >,
-          <span class="font-semibold text-gray-900"
-            >scalable backend systems</span
-          >, and
-          <span class="font-semibold text-gray-900">thoughtful UIs</span> that solve
-          real-world problems.
+          {t("hero.description")}
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <a href="/projects" class="btn-primary-large group">
-            View My Work
+          <a
+            href={lang === "de" ? "/de/projects" : "/projects"}
+            class="btn-primary-large group"
+          >
+            {t("hero.buttons.viewWork")}
             <ArrowRight
               className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
             />
           </a>
-          <a href="/resume" class="btn-secondary-large group">
+          <a
+            href={lang === "de"
+              ? "/media/vivek/viv/code/astro-portfolio/src/data/Vivek Sindagi DE.pdf"
+              : "https://firebasestorage.googleapis.com/v0/b/itsviv0.appspot.com/o/Vivek%20Sindagi%20EU.pdf?alt=media&token=9471acc9-5196-4137-a9f5-d6e4a02d97f6"}
+            class="btn-secondary-large group"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Download className="w-5 h-5 mr-2" />
-            Download Resume
+            {t("hero.buttons.downloadCV")}
           </a>
         </div>
       </div>

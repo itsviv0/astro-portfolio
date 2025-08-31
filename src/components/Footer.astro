@@ -1,5 +1,17 @@
 ---
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { getLangFromUrl, useTranslations } from "../i18n/index.js";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Helper function to get the correct path for current language
+const getLocalizedPath = (path) => {
+  if (lang === "de") {
+    return path === "/" ? "/de" : `/de${path}`;
+  }
+  return path === "/" ? "/" : path;
+};
 ---
 
 <footer
@@ -28,8 +40,7 @@ import { Github, Linkedin, Mail, Twitter } from "lucide-react";
           Vivek Sindagi
         </h3>
         <p class="text-gray-300 mb-8 max-w-md text-lg leading-relaxed">
-          Software Developer & Data Engineer passionate about building scalable
-          systems and meaningful user experiences that make a difference.
+          {t("about.description")}
         </p>
         <div class="flex space-x-3">
           <a href="mailto:vivekganeshs12@gmail.com" class="social-link">
@@ -52,48 +63,51 @@ import { Github, Linkedin, Mail, Twitter } from "lucide-react";
         <ul class="space-y-3 text-gray-300">
           <li>
             <a
-              href="/about"
+              href={getLocalizedPath("/about")}
               class="hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
-              >About</a
+              >{t("nav.about")}</a
             >
           </li>
           <li>
             <a
-              href="/projects"
+              href={getLocalizedPath("/projects")}
               class="hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
-              >Projects</a
+              >{t("nav.projects")}</a
             >
           </li>
           <li>
             <a
-              href="/blog"
+              href={getLocalizedPath("/achievements")}
               class="hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
-              >Blog</a
+              >{t("nav.achievements")}</a
             >
           </li>
           <li>
             <a
-              href="/resume"
+              href={lang === "de"
+                ? "/media/vivek/viv/code/astro-portfolio/src/data/Vivek Sindagi DE.pdf"
+                : "https://firebasestorage.googleapis.com/v0/b/itsviv0.appspot.com/o/Vivek%20Sindagi%20EU.pdf?alt=media&token=9471acc9-5196-4137-a9f5-d6e4a02d97f6"}
               class="hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
-              >Resume</a
+              target="_blank"
+              rel="noopener noreferrer">{t("hero.buttons.downloadCV")}</a
             >
           </li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-bold mb-6 text-white">Contact</h4>
+        <h4 class="font-bold mb-6 text-white">{t("contact.title")}</h4>
         <ul class="space-y-3 text-gray-300">
           <li class="flex items-center gap-2">
             <Mail className="w-4 h-4 text-primary-400" />
             vivekganeshs12@gmail.com
           </li>
-          <li>📍 Bengaluru, India</li>
+          <li>📍 {t("hero.location")}, India</li>
           <li>
             <a
-              href="/contact"
+              href={getLocalizedPath("/contact")}
               class="hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
-              >Get in Touch</a
+              >{t("contact.title")}</a
             >
           </li>
         </ul>
@@ -103,9 +117,10 @@ import { Github, Linkedin, Mail, Twitter } from "lucide-react";
     <div
       class="border-t border-gray-700/50 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-400"
     >
-      <p>&copy; 2025 Vivek SIndagi. All rights reserved.</p>
+      <p>&copy; 2025 Vivek Sindagi. {t("footer.rights")}</p>
       <p class="mt-4 md:mt-0 text-sm">
-        Built with <span class="text-red-400">♥</span> using Astro & Tailwind CSS
+        {t("footer.built")}
+        <span class="text-red-400">♥</span>
       </p>
     </div>
   </div>

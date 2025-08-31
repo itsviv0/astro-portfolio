@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "projects": "Projekte",
+    "achievements": "Erfolge",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "available": "Verfügbar für neue Möglichkeiten",
+    "greeting": "Hallo, ich bin",
+    "title": "Software-Entwickler in",
+    "location": "Bengaluru",
+    "description": "Ich entwickle robuste Datenpipelines, skalierbare Backend-Systeme und durchdachte Benutzeroberflächen.",
+    "buttons": {
+      "viewWork": "Meine Arbeit ansehen",
+      "downloadCV": "Lebenslauf herunterladen"
+    }
+  },
+  "about": {
+    "title": "Über mich",
+    "description": "Software-Entwickler & Dateningenieur in Bengaluru. Ich entwickle robuste Datenpipelines, skalierbare Backend-Systeme und durchdachte Benutzeroberflächen."
+  },
+  "projects": {
+    "title": "Ausgewählte Projekte",
+    "subtitle": "Hier sind einige meiner aktuellen Projekte, die meine Fähigkeiten und Erfahrungen zeigen.",
+    "viewAll": "Alle Projekte anzeigen",
+    "viewDemo": "Demo ansehen",
+    "viewCode": "Code ansehen"
+  },
+  "achievements": {
+    "title": "Neueste Erfolge",
+    "subtitle": "Aktuelle Meilensteine und Anerkennungen in meiner beruflichen Laufbahn.",
+    "readTime": "Min. Lesezeit",
+    "viewAll": "Alle Erfolge anzeigen"
+  },
+  "contact": {
+    "title": "Lassen Sie uns zusammenarbeiten",
+    "description": "Ich bin immer offen für Diskussionen über neue Möglichkeiten, interessante Projekte und Wege zur Zusammenarbeit.",
+    "email": "E-Mail senden",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten.",
+    "built": "Erstellt mit Astro & Tailwind CSS"
+  },
+  "meta": {
+    "description": "Software-Entwickler & Dateningenieur in Bengaluru. Ich entwickle robuste Datenpipelines, skalierbare Backend-Systeme und durchdachte Benutzeroberflächen."
+  },
+  "timeline": {
+    "experience": "Erfahrungs-Timeline",
+    "journey": "Mein beruflicher Weg vom Studenten zum Ingenieur"
+  }
+}

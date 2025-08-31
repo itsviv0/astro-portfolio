@@ -1,7 +1,13 @@
 ---
 import { ArrowRight, Github, ExternalLink } from "lucide-react";
+import { getLangFromUrl, useTranslations } from "../i18n/index.js";
 import projects from "../data/projects.js";
-const featuredProjects = projects.filter((project) => project.featured);
+import projectsDE from "../data/projects-de.js";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentProjects = lang === "de" ? projectsDE : projects;
+const featuredProjects = currentProjects.filter((project) => project.featured);
 ---
 
 <section class="py-16 bg-white">
@@ -14,19 +20,18 @@ const featuredProjects = projects.filter((project) => project.featured);
         Portfolio Highlights
       </div>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
-        Featured Projects
+        {t("projects.title")}
       </h2>
       <p
         class="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
       >
-        Real-world solutions that demonstrate my expertise in full-stack
-        development and data engineering
+        {t("projects.subtitle")}
       </p>
     </div>
 
     <div class="grid lg:grid-cols-3 gap-8 lg:gap-10">
       {
-        projects.map((project, index) => (
+        featuredProjects.map((project, index) => (
           <div
             class="project-card group"
             style={`animation-delay: ${index * 0.15}s`}
@@ -92,8 +97,11 @@ const featuredProjects = projects.filter((project) => project.featured);
     </div>
 
     <div class="text-center mt-16">
-      <a href="/projects" class="btn-secondary-large group">
-        View All Projects
+      <a
+        href={lang === "de" ? "/de/projects" : "/projects"}
+        class="btn-secondary-large group"
+      >
+        {t("projects.viewAll")}
         <ArrowRight
           className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
         />

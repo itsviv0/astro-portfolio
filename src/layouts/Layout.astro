@@ -1,17 +1,19 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/index.js";
+
 export interface Props {
   title: string;
   description?: string;
 }
 
-const {
-  title,
-  description = "Software Developer & Data Engineer based in Bengaluru. I craft robust data pipelines, scalable backend systems, and thoughtful UIs.",
-} = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { title, description = t("meta.description") } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

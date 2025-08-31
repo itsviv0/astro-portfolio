@@ -1,6 +1,12 @@
 ---
 import { ArrowRight, Calendar, Award } from "lucide-react";
+import { getLangFromUrl, useTranslations } from "../i18n/index.js";
 import achievements from "../data/achievements.js";
+import achievementsDE from "../data/achievements-de.js";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentAchievements = lang === "de" ? achievementsDE : achievements;
 ---
 
 <section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative">
@@ -24,18 +30,18 @@ import achievements from "../data/achievements.js";
         Fresh Content
       </div>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
-        Latest Insights
+        {t("achievements.title")}
       </h2>
       <p
         class="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
       >
-        Recognition, leadership roles, and contributions to the tech community
+        {t("achievements.subtitle")}
       </p>
     </div>
 
     <div class="grid lg:grid-cols-3 gap-8 lg:gap-10">
       {
-        achievements.map((achievement, index) => (
+        currentAchievements.map((achievement, index) => (
           <article
             class="blog-card group"
             style={`animation-delay: ${index * 0.15}s`}
@@ -84,8 +90,11 @@ import achievements from "../data/achievements.js";
     </div>
 
     <div class="text-center mt-16">
-      <a href="/achievements" class="btn-secondary-large group">
-        View All Achievements
+      <a
+        href={lang === "de" ? "/de/achievements" : "/achievements"}
+        class="btn-secondary-large group"
+      >
+        {t("achievements.viewAll")}
         <ArrowRight
           className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
         />
