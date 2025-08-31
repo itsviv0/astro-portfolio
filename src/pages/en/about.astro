@@ -31,40 +31,20 @@ const t = useTranslations("en");
 
             <div class="space-y-16">
               {
-                timeline.map((item, index) => (
-                  <div
-                    class="relative animate-slide-up"
-                    style={`animation-delay: ${index * 0.15}s`}
-                  >
-                    <div class="absolute left-6 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-lg z-10" />
-
-                    <div class="ml-20">
-                      <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
-                        <div class="flex flex-col md:flex-row md:items-center gap-4 mb-6">
-                          <div class="flex items-center gap-3">
-                            <span class="text-2xl">{item.emoji}</span>
-                            <h3 class="text-xl font-bold text-gray-900">
-                              {item.title}
-                            </h3>
-                          </div>
-                          <div class="md:ml-auto">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary-50 text-primary-700">
-                              {item.period}
-                            </span>
-                          </div>
-                        </div>
-
-                        <p class="text-gray-600 leading-relaxed mb-6">
-                          {item.description}
-                        </p>
-
-                        <div class="flex flex-wrap gap-2">
-                          {item.skills.map((skill) => (
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium">
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
+                timeline.map((item) => (
+                  <div class="timeline-item">
+                    <div class="timeline-marker">{item.emoji}</div>
+                    <div class="timeline-content">
+                      <h3 class="text-2xl font-bold mb-3 text-gray-900">
+                        {item.title} ({item.period})
+                      </h3>
+                      <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        {item.description}
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        {item.skills.map((skill) => (
+                          <span class="skill-tag">{skill}</span>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -79,3 +59,26 @@ const t = useTranslations("en");
 
   <Footer />
 </Layout>
+
+<style>
+  .timeline-item {
+    @apply relative flex items-start gap-8 animate-slide-up;
+  }
+
+  .timeline-marker {
+    @apply w-16 h-16 rounded-full bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center text-2xl font-bold flex-shrink-0 relative z-10 shadow-lg;
+  }
+
+  .timeline-content {
+    @apply flex-1 pb-12;
+  }
+
+  .skill-tag {
+    @apply text-sm bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full font-medium hover:bg-primary-100 transition-colors;
+  }
+
+  .bg-grid-pattern {
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+</style>
