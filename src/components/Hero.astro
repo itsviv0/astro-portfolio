@@ -74,74 +74,62 @@ const t = useTranslations(lang);
             {t("hero.buttons.downloadCV")}
           </a>
         </div>
-      </div>
 
-      <!-- Credibility Section -->
-      <div class="animate-slide-up" style="animation-delay: 0.3s">
-        <p
-          class="text-gray-500 mb-8 text-sm uppercase tracking-wider font-medium"
-        >
-          Trusted by teams at
-        </p>
-        <div
-          class="flex flex-wrap justify-center items-center gap-12 lg:gap-16"
-        >
-          <div class="company-logo">
-            <span
-              class="text-2xl lg:text-3xl font-bold text-gray-400 hover:text-gray-700"
-              >TechCorp</span
-            >
-          </div>
-          <div class="company-logo">
-            <span
-              class="text-2xl lg:text-3xl font-bold text-gray-400 hover:text-gray-700"
-              >DataFlow</span
-            >
-          </div>
-          <div class="company-logo">
-            <span
-              class="text-2xl lg:text-3xl font-bold text-gray-400 hover:text-gray-700"
-              >InnovateLabs</span
-            >
-          </div>
-          <div class="company-logo">
-            <span
-              class="text-2xl lg:text-3xl font-bold text-gray-400 hover:text-gray-700"
-              >StartupX</span
-            >
+        <!-- Credibility Section -->
+        <div class="animate-slide-up py-8" style="animation-delay: 0.3s">
+          <p
+            class="text-gray-500 mb-8 text-sm uppercase tracking-wider font-medium"
+          >
+            Trusted by teams at
+          </p>
+          <div
+            class="flex flex-wrap justify-center items-center gap-12 lg:gap-16"
+          >
+            <div class="company-logo">
+              <span
+                class="text-2xl lg:text-3xl font-bold text-gray-400 hover:text-gray-700"
+                >TechCorp</span
+              >
+            </div>
+            <div class="company-logo">
+              <span
+                class="text-2xl lg:text-3xl font-bold text-gray-400 hover:text-gray-700"
+                >DataFlow</span
+              >
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Scroll indicator -->
-  <div
-    class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-subtle"
-  >
+    <!-- Scroll indicator -->
     <div
-      class="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center"
+      class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-subtle"
     >
-      <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
+      <div
+        class="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center"
+      >
+        <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
+      </div>
     </div>
   </div>
+
+  <style>
+    .btn-primary-large {
+      @apply bg-primary-600 text-white px-8 py-4 rounded-xl hover:bg-primary-700 transition-all duration-300 font-semibold text-lg inline-flex items-center hover:shadow-xl hover:shadow-primary-600/25 hover:scale-105 transform;
+    }
+
+    .btn-secondary-large {
+      @apply border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl hover:border-primary-600 hover:text-primary-600 hover:bg-primary-50 transition-all duration-300 font-semibold text-lg inline-flex items-center hover:shadow-lg transform hover:scale-105;
+    }
+
+    .company-logo {
+      @apply transition-all duration-300 cursor-pointer transform hover:scale-110;
+    }
+
+    .bg-grid-pattern {
+      background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+  </style>
 </section>
-
-<style>
-  .btn-primary-large {
-    @apply bg-primary-600 text-white px-8 py-4 rounded-xl hover:bg-primary-700 transition-all duration-300 font-semibold text-lg inline-flex items-center hover:shadow-xl hover:shadow-primary-600/25 hover:scale-105 transform;
-  }
-
-  .btn-secondary-large {
-    @apply border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl hover:border-primary-600 hover:text-primary-600 hover:bg-primary-50 transition-all duration-300 font-semibold text-lg inline-flex items-center hover:shadow-lg transform hover:scale-105;
-  }
-
-  .company-logo {
-    @apply transition-all duration-300 cursor-pointer transform hover:scale-110;
-  }
-
-  .bg-grid-pattern {
-    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-</style>
