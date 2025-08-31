@@ -1,72 +1,78 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-import { ArrowRight, Calendar, Clock, Search } from 'lucide-react';
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import { ArrowRight, Calendar, Clock, Search } from "lucide-react";
 
 const posts = [
   {
     title: "My Journey with Apache Airflow",
-    excerpt: "Lessons learned from building production-ready data pipelines and orchestrating complex workflows in a high-scale environment.",
+    excerpt:
+      "Lessons learned from building production-ready data pipelines and orchestrating complex workflows in a high-scale environment.",
     date: "2024-12-15",
     readTime: "5 min read",
     tags: ["Data Engineering", "Python", "Airflow", "ETL"],
     link: "/blog/airflow-journey",
-    featured: true
+    featured: true,
   },
   {
     title: "Optimizing React UI with Skeleton Loaders",
-    excerpt: "How implementing skeleton screens improved perceived performance and user experience metrics by 40%.",
+    excerpt:
+      "How implementing skeleton screens improved perceived performance and user experience metrics by 40%.",
     date: "2024-12-10",
     readTime: "4 min read",
     tags: ["React", "Performance", "UX", "Frontend"],
     link: "/blog/skeleton-loaders",
-    featured: false
+    featured: false,
   },
   {
     title: "Building Scalable APIs with Node.js",
-    excerpt: "Best practices for designing REST APIs that can handle growth and maintain performance under load.",
+    excerpt:
+      "Best practices for designing REST APIs that can handle growth and maintain performance under load.",
     date: "2024-12-05",
     readTime: "6 min read",
     tags: ["Node.js", "API Design", "Backend", "Scalability"],
     link: "/blog/scalable-apis",
-    featured: false
+    featured: false,
   },
   {
     title: "Database Indexing Strategies",
-    excerpt: "Understanding when and how to use different types of database indexes for optimal query performance.",
+    excerpt:
+      "Understanding when and how to use different types of database indexes for optimal query performance.",
     date: "2024-11-28",
     readTime: "7 min read",
     tags: ["Database", "PostgreSQL", "Performance", "Optimization"],
     link: "/blog/database-indexing",
-    featured: false
+    featured: false,
   },
   {
     title: "Microservices Communication Patterns",
-    excerpt: "Exploring different patterns for service-to-service communication in distributed systems.",
+    excerpt:
+      "Exploring different patterns for service-to-service communication in distributed systems.",
     date: "2024-11-20",
     readTime: "8 min read",
     tags: ["Microservices", "Architecture", "Distributed Systems"],
     link: "/blog/microservices-communication",
-    featured: false
+    featured: false,
   },
   {
     title: "Real-time Data Processing with Kafka",
-    excerpt: "Setting up and scaling Apache Kafka for real-time event streaming in production environments.",
+    excerpt:
+      "Setting up and scaling Apache Kafka for real-time event streaming in production environments.",
     date: "2024-11-15",
     readTime: "6 min read",
     tags: ["Kafka", "Real-time", "Data Streaming", "Event-driven"],
     link: "/blog/kafka-real-time",
-    featured: false
-  }
+    featured: false,
+  },
 ];
 
-const allTags = [...new Set(posts.flatMap(post => post.tags))];
+const allTags = [...new Set(posts.flatMap((post) => post.tags))];
 ---
 
-<Layout title="Blog - Vivek G Sindagi">
+<Layout title="Blog - Vivek Sindagi">
   <Navigation />
-  
+
   <main class="pt-24 pb-16">
     <!-- Hero Section -->
     <section class="py-16 bg-gradient-to-br from-primary-50 to-gray-50">
@@ -76,135 +82,157 @@ const allTags = [...new Set(posts.flatMap(post => post.tags))];
             Blog & Insights
           </h1>
           <p class="text-xl text-gray-600 mb-8 animate-slide-up">
-            Thoughts on software development, data engineering, and lessons learned from building production systems
+            Thoughts on software development, data engineering, and lessons
+            learned from building production systems
           </p>
         </div>
       </div>
     </section>
-    
+
     <!-- Search and Filter -->
     <section class="py-8 bg-white border-b border-gray-200">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
           <div class="flex flex-col md:flex-row gap-4 mb-8">
             <div class="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input 
-                type="text" 
+              <Search
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"
+              />
+              <input
+                type="text"
                 placeholder="Search posts..."
                 class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
                 id="search-input"
               />
             </div>
           </div>
-          
+
           <div class="flex flex-wrap gap-2">
             <button class="tag-filter active" data-tag="all">All</button>
-            {allTags.map((tag) => (
-              <button class="tag-filter" data-tag={tag}>{tag}</button>
-            ))}
+            {
+              allTags.map((tag) => (
+                <button class="tag-filter" data-tag={tag}>
+                  {tag}
+                </button>
+              ))
+            }
           </div>
         </div>
       </div>
     </section>
-    
+
     <!-- Featured Post -->
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
           <h2 class="text-2xl font-bold mb-8">Featured Post</h2>
-          
-          {posts.filter(post => post.featured).map((post) => (
-            <article class="featured-post animate-slide-up">
-              <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                <div class="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
-                  {new Date(post.date).toLocaleDateString('en-US', { 
-                    month: 'long', 
-                    day: 'numeric', 
-                    year: 'numeric' 
-                  })}
-                </div>
-                <div class="flex items-center gap-1">
-                  <Clock className="w-4 h-4" />
-                  {post.readTime}
-                </div>
-              </div>
-              
-              <h3 class="text-3xl font-bold mb-4 hover:text-primary-600 transition-colors">
-                <a href={post.link}>{post.title}</a>
-              </h3>
-              
-              <p class="text-gray-600 mb-6 text-lg">{post.excerpt}</p>
-              
-              <div class="flex flex-wrap gap-2 mb-6">
-                {post.tags.map((tag) => (
-                  <span class="text-sm bg-primary-50 text-primary-700 px-3 py-1 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              
-              <a href={post.link} class="btn-primary">
-                Read Full Post
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
-            </article>
-          ))}
+
+          {
+            posts
+              .filter((post) => post.featured)
+              .map((post) => (
+                <article class="featured-post animate-slide-up">
+                  <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                    <div class="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      {new Date(post.date).toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      {post.readTime}
+                    </div>
+                  </div>
+
+                  <h3 class="text-3xl font-bold mb-4 hover:text-primary-600 transition-colors">
+                    <a href={post.link}>{post.title}</a>
+                  </h3>
+
+                  <p class="text-gray-600 mb-6 text-lg">{post.excerpt}</p>
+
+                  <div class="flex flex-wrap gap-2 mb-6">
+                    {post.tags.map((tag) => (
+                      <span class="text-sm bg-primary-50 text-primary-700 px-3 py-1 rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a href={post.link} class="btn-primary">
+                    Read Full Post
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </a>
+                </article>
+              ))
+          }
         </div>
       </div>
     </section>
-    
+
     <!-- All Posts -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
           <h2 class="text-2xl font-bold mb-8">All Posts</h2>
-          
+
           <div class="space-y-8" id="posts-container">
-            {posts.filter(post => !post.featured).map((post, index) => (
-              <article class="blog-post" data-tags={post.tags.join(' ')} style={`animation-delay: ${index * 0.1}s`}>
-                <div class="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                  <div class="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    {new Date(post.date).toLocaleDateString('en-US', { 
-                      month: 'short', 
-                      day: 'numeric', 
-                      year: 'numeric' 
-                    })}
-                  </div>
-                  <div class="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    {post.readTime}
-                  </div>
-                </div>
-                
-                <h3 class="text-2xl font-bold mb-3 hover:text-primary-600 transition-colors">
-                  <a href={post.link}>{post.title}</a>
-                </h3>
-                
-                <p class="text-gray-600 mb-4">{post.excerpt}</p>
-                
-                <div class="flex flex-wrap gap-2 mb-4">
-                  {post.tags.map((tag) => (
-                    <span class="text-xs bg-primary-50 text-primary-700 px-2 py-1 rounded-full">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                
-                <a href={post.link} class="text-primary-600 font-medium hover:text-primary-700 transition-colors inline-flex items-center">
-                  Read More
-                  <ArrowRight className="w-4 h-4 ml-1" />
-                </a>
-              </article>
-            ))}
+            {
+              posts
+                .filter((post) => !post.featured)
+                .map((post, index) => (
+                  <article
+                    class="blog-post"
+                    data-tags={post.tags.join(" ")}
+                    style={`animation-delay: ${index * 0.1}s`}
+                  >
+                    <div class="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                      <div class="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        {new Date(post.date).toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        })}
+                      </div>
+                      <div class="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        {post.readTime}
+                      </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-3 hover:text-primary-600 transition-colors">
+                      <a href={post.link}>{post.title}</a>
+                    </h3>
+
+                    <p class="text-gray-600 mb-4">{post.excerpt}</p>
+
+                    <div class="flex flex-wrap gap-2 mb-4">
+                      {post.tags.map((tag) => (
+                        <span class="text-xs bg-primary-50 text-primary-700 px-2 py-1 rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a
+                      href={post.link}
+                      class="text-primary-600 font-medium hover:text-primary-700 transition-colors inline-flex items-center"
+                    >
+                      Read More
+                      <ArrowRight className="w-4 h-4 ml-1" />
+                    </a>
+                  </article>
+                ))
+            }
           </div>
         </div>
       </div>
     </section>
   </main>
-  
+
   <Footer />
 </Layout>
 
@@ -212,19 +240,19 @@ const allTags = [...new Set(posts.flatMap(post => post.tags))];
   .featured-post {
     @apply bg-gradient-to-r from-primary-50 to-gray-50 p-8 rounded-xl border border-primary-200;
   }
-  
+
   .blog-post {
     @apply bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300 animate-slide-up;
   }
-  
+
   .tag-filter {
     @apply px-4 py-2 rounded-full border border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 transition-all font-medium text-sm;
   }
-  
+
   .tag-filter.active {
     @apply bg-primary-600 text-white border-primary-600;
   }
-  
+
   .btn-primary {
     @apply bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors font-medium inline-flex items-center;
   }
@@ -232,44 +260,44 @@ const allTags = [...new Set(posts.flatMap(post => post.tags))];
 
 <script>
   // Search functionality
-  const searchInput = document.getElementById('search-input');
-  const postsContainer = document.getElementById('posts-container');
-  const blogPosts = document.querySelectorAll('.blog-post');
-  
-  searchInput?.addEventListener('input', (e) => {
+  const searchInput = document.getElementById("search-input");
+  const postsContainer = document.getElementById("posts-container");
+  const blogPosts = document.querySelectorAll(".blog-post");
+
+  searchInput?.addEventListener("input", (e) => {
     const searchTerm = e.target.value.toLowerCase();
-    
-    blogPosts.forEach(post => {
-      const title = post.querySelector('h3').textContent.toLowerCase();
-      const excerpt = post.querySelector('p').textContent.toLowerCase();
-      
+
+    blogPosts.forEach((post) => {
+      const title = post.querySelector("h3").textContent.toLowerCase();
+      const excerpt = post.querySelector("p").textContent.toLowerCase();
+
       if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
-        post.style.display = 'block';
+        post.style.display = "block";
       } else {
-        post.style.display = 'none';
+        post.style.display = "none";
       }
     });
   });
-  
+
   // Tag filtering
-  const tagFilters = document.querySelectorAll('.tag-filter');
-  
-  tagFilters.forEach(filter => {
-    filter.addEventListener('click', () => {
-      const selectedTag = filter.getAttribute('data-tag');
-      
+  const tagFilters = document.querySelectorAll(".tag-filter");
+
+  tagFilters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+      const selectedTag = filter.getAttribute("data-tag");
+
       // Update active filter
-      tagFilters.forEach(f => f.classList.remove('active'));
-      filter.classList.add('active');
-      
+      tagFilters.forEach((f) => f.classList.remove("active"));
+      filter.classList.add("active");
+
       // Filter posts
-      blogPosts.forEach(post => {
-        const postTags = post.getAttribute('data-tags');
-        
-        if (selectedTag === 'all' || postTags.includes(selectedTag)) {
-          post.style.display = 'block';
+      blogPosts.forEach((post) => {
+        const postTags = post.getAttribute("data-tags");
+
+        if (selectedTag === "all" || postTags.includes(selectedTag)) {
+          post.style.display = "block";
         } else {
-          post.style.display = 'none';
+          post.style.display = "none";
         }
       });
     });
