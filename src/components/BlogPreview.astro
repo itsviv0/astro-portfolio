@@ -1,33 +1,33 @@
 ---
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 
-const posts = [
+const achievements = [
   {
-    title: "My Journey with Apache Airflow",
+    title: "Keploy API Fellowship",
     excerpt:
-      "Lessons learned from building production-ready data pipelines and orchestrating complex workflows.",
-    date: "2024-12-15",
-    readTime: "5 min read",
-    tags: ["Data Engineering", "Python", "Airflow"],
-    link: "/blog/airflow-journey",
+      "Selected among the top 1,029 fellows from over 18,500+ global applicants. Ranked in the top 168 out of 1,029 fellows (top 0.99%).",
+    date: "2025-06-03",
+    readTime: "Fellowship",
+    tags: ["API Development", "Testing", "Open Source"],
+    link: "/achievements/keploy-fellowship",
   },
   {
-    title: "Optimizing React UI with Skeleton Loaders",
+    title: "Joint Secretary | BMSCE IEEE",
     excerpt:
-      "How implementing skeleton screens improved perceived performance and user experience metrics.",
-    date: "2024-12-10",
-    readTime: "4 min read",
-    tags: ["React", "Performance", "UX"],
-    link: "/blog/skeleton-loaders",
+      "Coordinated 10+ technical events and workshops with footfall over 100+ students and professionals.",
+    date: "2022-01-01",
+    readTime: "Leadership",
+    tags: ["Leadership", "Event Management", "IEEE"],
+    link: "/achievements/ieee-joint-secretary",
   },
   {
-    title: "Building Scalable APIs with Node.js",
+    title: "ICHack 1.0 Organizing Committee",
     excerpt:
-      "Best practices for designing REST APIs that can handle growth and maintain performance.",
-    date: "2024-12-05",
-    readTime: "6 min read",
-    tags: ["Node.js", "API Design", "Backend"],
-    link: "/blog/scalable-apis",
+      "Assisted in planning and logistics for a 48-hour national-level hackathon with 250+ participants.",
+    date: "2022-09-03",
+    readTime: "Event",
+    tags: ["Hackathon", "Event Management", "Technical"],
+    link: "/achievements/ichack-organizing",
   },
 ];
 ---
@@ -58,14 +58,13 @@ const posts = [
       <p
         class="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
       >
-        Thoughts on software development, data engineering, and lessons learned
-        from building production systems
+        Recognition, leadership roles, and contributions to the tech community
       </p>
     </div>
 
     <div class="grid lg:grid-cols-3 gap-8 lg:gap-10">
       {
-        posts.map((post, index) => (
+        achievements.map((achievement, index) => (
           <article
             class="blog-card group"
             style={`animation-delay: ${index * 0.15}s`}
@@ -73,7 +72,7 @@ const posts = [
             <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
               <div class="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
-                {new Date(post.date).toLocaleDateString("en-US", {
+                {new Date(achievement.date).toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
                   year: "numeric",
@@ -81,18 +80,20 @@ const posts = [
               </div>
               <div class="flex items-center gap-1">
                 <Clock className="w-4 h-4" />
-                {post.readTime}
+                {achievement.readTime}
               </div>
             </div>
 
             <h3 class="text-xl lg:text-2xl font-bold mb-4 group-hover:text-primary-600 transition-colors leading-tight">
-              <a href={post.link}>{post.title}</a>
+              <a href={achievement.link}>{achievement.title}</a>
             </h3>
 
-            <p class="text-gray-600 mb-6 leading-relaxed">{post.excerpt}</p>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              {achievement.excerpt}
+            </p>
 
             <div class="flex flex-wrap gap-2 mb-4">
-              {post.tags.map((tag) => (
+              {achievement.tags.map((tag) => (
                 <span class="text-xs bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full font-medium hover:bg-primary-100 transition-colors">
                   {tag}
                 </span>
@@ -100,7 +101,7 @@ const posts = [
             </div>
 
             <a
-              href={post.link}
+              href={achievement.link}
               class="text-primary-600 font-semibold hover:text-primary-700 transition-colors inline-flex items-center group/link mt-auto"
             >
               Read More
@@ -112,8 +113,8 @@ const posts = [
     </div>
 
     <div class="text-center mt-16">
-      <a href="/blog" class="btn-secondary-large group">
-        View All Posts
+      <a href="/achievements" class="btn-secondary-large group">
+        View All Achievements
         <ArrowRight
           className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
         />
