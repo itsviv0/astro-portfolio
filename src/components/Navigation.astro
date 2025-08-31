@@ -34,15 +34,16 @@ const currentPath = Astro.url.pathname;
           class={`nav-link ${currentPath === "/achievements" ? "active" : ""}`}
           >Achievements</a
         >
-        <a
-          href="/contact"
-          class={`nav-link ${currentPath === "/contact" ? "active" : ""}`}
-          >Contact</a
-        >
       </div>
 
-      <div class="hidden md:flex items-center space-x-3">
-        <a href="/resume" class="btn-secondary py-4">Resume</a>
+      <div
+        class="hidden md:flex items-center space-x-3 transition-all duration-300"
+        id="nav-buttons"
+      >
+        <a
+          href="https://firebasestorage.googleapis.com/v0/b/itsviv0.appspot.com/o/Vivek%20Sindagi%20EU.pdf?alt=media&token=9471acc9-5196-4137-a9f5-d6e4a02d97f6"
+          class="btn-secondary py-4">Resume</a
+        >
         <a href="/contact" class="btn-primary py-4">Get in Touch</a>
       </div>
 
@@ -91,12 +92,14 @@ const currentPath = Astro.url.pathname;
           <a href="/about" class="mobile-nav-link">About</a>
           <a href="/projects" class="mobile-nav-link">Projects</a>
           <a href="/achievements" class="mobile-nav-link">Achievements</a>
-          <a href="/contact" class="mobile-nav-link">Contact</a>
         </div>
         <div
           class="flex flex-col space-y-2 mt-4 pt-4 border-t border-gray-200/50"
         >
-          <a href="/resume" class="btn-secondary-mobile">Resume</a>
+          <a
+            href="https://firebasestorage.googleapis.com/v0/b/itsviv0.appspot.com/o/Vivek%20Sindagi%20EU.pdf?alt=media&token=9471acc9-5196-4137-a9f5-d6e4a02d97f6"
+            class="btn-secondary-mobile">Resume</a
+          >
           <a href="/contact" class="btn-primary-mobile">Get in Touch</a>
         </div>
       </div>
@@ -171,16 +174,38 @@ const currentPath = Astro.url.pathname;
 
   // Navbar scroll effect
   let lastScrollY = window.scrollY;
+  const navButtons = document.getElementById("nav-buttons");
+
+  // Initially hide buttons if at top of page
+  if (window.scrollY <= 50) {
+    navButtons?.style.setProperty("opacity", "0");
+    navButtons?.style.setProperty("visibility", "hidden");
+    navButtons?.style.setProperty("transform", "translateY(-10px)");
+  }
 
   window.addEventListener("scroll", () => {
     const currentScrollY = window.scrollY;
 
-    if (currentScrollY > 100) {
+    // Navbar background effect
+    if (currentScrollY > 50) {
       navbar?.classList.add("bg-white/95");
       navbar?.classList.remove("bg-white/90");
     } else {
       navbar?.classList.add("bg-white/90");
       navbar?.classList.remove("bg-white/95");
+    }
+
+    // Button visibility effect
+    if (currentScrollY > 50) {
+      // Show buttons when scrolled down
+      navButtons?.style.setProperty("opacity", "1");
+      navButtons?.style.setProperty("visibility", "visible");
+      navButtons?.style.setProperty("transform", "translateY(0)");
+    } else {
+      // Hide buttons when at top
+      navButtons?.style.setProperty("opacity", "0");
+      navButtons?.style.setProperty("visibility", "hidden");
+      navButtons?.style.setProperty("transform", "translateY(-10px)");
     }
 
     lastScrollY = currentScrollY;

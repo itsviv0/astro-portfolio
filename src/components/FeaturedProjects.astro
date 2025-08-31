@@ -1,38 +1,7 @@
 ---
 import { ArrowRight, Github, ExternalLink } from "lucide-react";
-
-const projects = [
-  {
-    title: "AI GNU Unit Test Generator",
-    description:
-      "Built Grok-AI powered test case generator for C/C++ projects with real-time syntax validation",
-    impact: "95%+ test coverage",
-    stack: ["Python", "Grok AI", "Google Test", "C/C++"],
-    image:
-      "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800",
-    link: "/projects/ai-unit-test-generator",
-  },
-  {
-    title: "CropWise ML Platform",
-    description:
-      "Machine learning models using Scikit-Learn to predict optimal crops based on soil and climate data",
-    impact: "95%+ model accuracy",
-    stack: ["Python", "Scikit-Learn", "Machine Learning", "GUI"],
-    image:
-      "https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=800",
-    link: "/projects/cropwise",
-  },
-  {
-    title: "Express Supabase API",
-    description:
-      "RESTful API with Express.js and PostgreSQL, featuring automated testing with Keploy AI",
-    impact: "Serverless deployment",
-    stack: ["Express.js", "PostgreSQL", "Vercel", "Keploy AI"],
-    image:
-      "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
-    link: "/projects/express-supabase-api",
-  },
-];
+import projects from "../data/projects.js";
+const featuredProjects = projects.filter((project) => project.featured);
 ---
 
 <section class="py-16 bg-white">

@@ -2,52 +2,19 @@
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
-import { Code, Database, Users, Zap } from "lucide-react";
+import timeline from "../data/experience.js";
 ---
 
 <Layout title="About - Vivek Sindagi">
   <Navigation />
 
   <main class="pt-24 pb-16">
-    <!-- Hero Section -->
-    <section
-      class="py-20 bg-gradient-to-br from-primary-50 via-white to-gray-50 relative overflow-hidden"
-    >
-      <!-- Background decoration -->
-      <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      <div
-        class="absolute top-20 right-10 w-72 h-72 bg-primary-100 rounded-full blur-3xl opacity-20"
-      >
-      </div>
-
-      <div class="container mx-auto px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-          <div
-            class="inline-flex items-center bg-primary-50 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-8 animate-bounce-subtle"
-          >
-            <span class="w-2 h-2 bg-primary-500 rounded-full mr-2"></span>
-            My Story
-          </div>
-          <h1
-            class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 animate-fade-in"
-          >
-            About Me
-          </h1>
-          <p
-            class="text-xl md:text-2xl text-gray-600 mb-8 animate-slide-up leading-relaxed"
-          >
-            A journey from curiosity to creating impactful solutions
-          </p>
-        </div>
-      </div>
-    </section>
-
     <!-- Story Timeline -->
-    <section class="py-16 bg-white">
+    <section class="py-8 bg-white">
       <div class="container mx-auto px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
           <h2
-            class="text-3xl md:text-4xl font-display font-bold mb-16 text-center"
+            class="text-2xl md:text-3xl font-display font-bold mb-16 text-center"
           >
             My Journey
           </h2>
@@ -60,229 +27,26 @@ import { Code, Database, Users, Zap } from "lucide-react";
             </div>
 
             <div class="space-y-16">
-              <div class="timeline-item">
-                <div class="timeline-marker">🎯</div>
-                <div class="timeline-content">
-                  <h3 class="text-2xl font-bold mb-3 text-gray-900">
-                    Tech Intern - Rakuten Symphony (2025)
-                  </h3>
-                  <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                    Currently engineering Python automation scripts to extract
-                    and process bug-related data from Bugzilla APIs. Built a
-                    Streamlit dashboard for visualizing key bug statistics and
-                    boosted traceability accuracy by 60%.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Bugzilla APIs</span>
-                    <span class="skill-tag">Streamlit</span>
-                    <span class="skill-tag">Data Processing</span>
+              {
+                timeline.map((item) => (
+                  <div class="timeline-item">
+                    <div class="timeline-marker">{item.emoji}</div>
+                    <div class="timeline-content">
+                      <h3 class="text-2xl font-bold mb-3 text-gray-900">
+                        {item.title} ({item.period})
+                      </h3>
+                      <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        {item.description}
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        {item.skills.map((skill) => (
+                          <span class="skill-tag">{skill}</span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-
-              <div class="timeline-item">
-                <div class="timeline-marker">💼</div>
-                <div class="timeline-content">
-                  <h3 class="text-2xl font-bold mb-3 text-gray-900">
-                    Software Engineer Intern - Hinge Health (2024)
-                  </h3>
-                  <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                    Independently delivered a full feature request by building a
-                    PySpark data pipeline on Databricks. Designed end-to-end
-                    orchestration using Airflow DAGs and reduced development
-                    time by 25%.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="skill-tag">PySpark</span>
-                    <span class="skill-tag">Databricks</span>
-                    <span class="skill-tag">Apache Airflow</span>
-                    <span class="skill-tag">PostgreSQL</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="timeline-item">
-                <div class="timeline-marker">🚀</div>
-                <div class="timeline-content">
-                  <h3 class="text-2xl font-bold mb-3 text-gray-900">
-                    The Dev Journey Begins (2021)
-                  </h3>
-                  <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                    Started my coding journey at BMS College of Engineering with
-                    Information Science. Built my first major projects including
-                    CropWise ML platform and RepoMarker editor that taught me
-                    the fundamentals of both frontend and backend development.
-                  </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Machine Learning</span>
-                    <span class="skill-tag">HTML/CSS</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Philosophy Section -->
-    <section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
-      <div class="container mx-auto px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto">
-          <h2
-            class="text-3xl md:text-4xl font-display font-bold mb-16 text-center"
-          >
-            Developer Philosophy
-          </h2>
-
-          <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            <div class="philosophy-card">
-              <div
-                class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-6"
-              >
-                <Code className="w-6 h-6 text-primary-600" />
-              </div>
-              <h3 class="text-xl font-bold mb-4 text-gray-900">
-                Clean & Maintainable Code
-              </h3>
-              <p class="text-gray-600 leading-relaxed">
-                I believe in writing code that tells a story. Every function,
-                variable, and comment should contribute to a clear narrative
-                that future developers (including myself) can easily follow.
-              </p>
-            </div>
-
-            <div class="philosophy-card">
-              <div
-                class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-6"
-              >
-                <Database className="w-6 h-6 text-primary-600" />
-              </div>
-              <h3 class="text-xl font-bold mb-4 text-gray-900">
-                Data-Driven Decisions
-              </h3>
-              <p class="text-gray-600 leading-relaxed">
-                Every architectural choice and optimization is backed by
-                metrics. I use tools like Hotjar and Google Analytics to
-                understand user behavior and make informed improvements.
-              </p>
-            </div>
-
-            <div class="philosophy-card">
-              <div
-                class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-6"
-              >
-                <Users className="w-6 h-6 text-primary-600" />
-              </div>
-              <h3 class="text-xl font-bold mb-4 text-gray-900">
-                Collaboration First
-              </h3>
-              <p class="text-gray-600 leading-relaxed">
-                Great software is built by teams, not individuals. I prioritize
-                clear communication, thorough documentation, and knowledge
-                sharing to help teams move fast together.
-              </p>
-            </div>
-
-            <div class="philosophy-card">
-              <div
-                class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-6"
-              >
-                <Zap className="w-6 h-6 text-primary-600" />
-              </div>
-              <h3 class="text-xl font-bold mb-4 text-gray-900">
-                Ship Fast, Learn Faster
-              </h3>
-              <p class="text-gray-600 leading-relaxed">
-                I believe in rapid iteration and continuous learning. Build
-                MVPs, gather feedback, and iterate based on real user needs
-                rather than assumptions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experimentation Section -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto">
-          <h2
-            class="text-3xl md:text-4xl font-display font-bold mb-16 text-center"
-          >
-            Experimentation & Iteration
-          </h2>
-
-          <div class="space-y-10">
-            <div class="experiment-card">
-              <h3 class="text-xl font-bold mb-4 text-gray-900">
-                PySpark Pipeline Optimization
-              </h3>
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                Built a reusable PySpark job codebase to post data fields to
-                Iterable, maintaining DRY and modularity principles across the
-                codebase and reducing development time by 25%.
-              </p>
-              <div class="flex items-center gap-4 text-sm">
-                <span
-                  class="bg-red-50 text-red-700 px-3 py-1 rounded-full font-medium"
-                  >Before: Manual processes</span
-                >
-                <span class="text-gray-400">→</span>
-                <span
-                  class="bg-green-50 text-green-700 px-3 py-1 rounded-full font-medium"
-                  >After: 25% faster development</span
-                >
-              </div>
-            </div>
-
-            <div class="experiment-card">
-              <h3 class="text-xl font-bold mb-4 text-gray-900">
-                Bug Management Automation
-              </h3>
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                Designed internal workflows to streamline bug management
-                processes and improved triage efficiency by automating
-                stakeholder identification with targeted email notifications.
-              </p>
-              <div class="flex items-center gap-4 text-sm">
-                <span
-                  class="bg-orange-50 text-orange-700 px-3 py-1 rounded-full font-medium"
-                  >Manual triage process</span
-                >
-                <span class="text-gray-400">→</span>
-                <span
-                  class="bg-green-50 text-green-700 px-3 py-1 rounded-full font-medium"
-                  >60% accuracy improvement</span
-                >
-              </div>
-            </div>
-
-            <div class="experiment-card">
-              <h3 class="text-xl font-bold mb-4 text-gray-900">
-                UI Component Library
-              </h3>
-              <p class="text-gray-600 mb-6 leading-relaxed">
-                Created a reusable UI component library with TypeScript and
-                designed a scalable typography system using Tailwind CSS and
-                Storybook, standardizing frontend elements across the CareHub
-                App.
-              </p>
-              <div class="flex items-center gap-4 text-sm">
-                <span
-                  class="bg-red-50 text-red-700 px-3 py-1 rounded-full font-medium"
-                  >Inconsistent UI elements</span
-                >
-                <span class="text-gray-400">→</span>
-                <span
-                  class="bg-green-50 text-green-700 px-3 py-1 rounded-full font-medium"
-                  >Standardized components</span
-                >
-              </div>
+                ))
+              }
             </div>
           </div>
         </div>
@@ -308,14 +72,6 @@ import { Code, Database, Users, Zap } from "lucide-react";
 
   .skill-tag {
     @apply text-sm bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full font-medium hover:bg-primary-100 transition-colors;
-  }
-
-  .philosophy-card {
-    @apply bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg hover:shadow-gray-200/50 transition-all duration-500 animate-scale-in transform hover:-translate-y-1;
-  }
-
-  .experiment-card {
-    @apply bg-gradient-to-br from-gray-50 to-gray-100 p-8 rounded-2xl border border-gray-200 hover:border-primary-200 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1;
   }
 
   .bg-grid-pattern {
