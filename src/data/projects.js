@@ -19,7 +19,7 @@ const projects = [
     image:
       "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800",
     github: "https://github.com/itsviv0/Ai_gnu_unit_test_gen",
-    demo: "https://github.com/itsviv0/Ai_gnu_unit_test_gen",
+    demo: null,
     category: "AI/ML",
     featured: true,
     link: "/projects/ai-unit-test-generator",
