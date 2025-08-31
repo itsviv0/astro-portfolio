@@ -1,0 +1,114 @@
+---
+import { ArrowRight, Calendar, Award } from "lucide-react";
+import { getLangFromUrl, useTranslations } from "../i18n/index.js";
+import achievements from "../data/achievements.js";
+import achievementsDE from "../data/achievements-de.js";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentAchievements = lang === "de" ? achievementsDE : achievements;
+---
+
+<section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative">
+  <!-- Background decoration -->
+  <div
+    class="absolute top-10 left-10 w-64 h-64 bg-primary-100 rounded-full blur-3xl opacity-20"
+  >
+  </div>
+  <div
+    class="absolute bottom-10 right-10 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-15"
+  >
+  </div>
+
+  <div class="container mx-auto px-6 lg:px-8 relative">
+    <div class="text-center mb-12">
+      <div
+        class="inline-flex items-center bg-white/80 backdrop-blur-sm text-gray-700 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-sm"
+      >
+        <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"
+        ></span>
+        Fresh Content
+      </div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6">
+        {t("achievements.title")}
+      </h2>
+      <p
+        class="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
+      >
+        {t("achievements.subtitle")}
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8 lg:gap-10">
+      {
+        currentAchievements.map((achievement, index) => (
+          <article
+            class="blog-card group"
+            style={`animation-delay: ${index * 0.15}s`}
+          >
+            <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
+              <div class="flex items-center gap-1">
+                <Calendar className="w-4 h-4" />
+                {new Date(achievement.date).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </div>
+              <div class="flex items-center gap-1">
+                <Award className="w-4 h-4" />
+                {achievement.readTime}
+              </div>
+            </div>
+
+            <h3 class="text-xl lg:text-2xl font-bold mb-4 group-hover:text-primary-600 transition-colors leading-tight">
+              <a href={achievement.link}>{achievement.title}</a>
+            </h3>
+
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              {achievement.excerpt}
+            </p>
+
+            <div class="flex flex-wrap gap-2 mb-4">
+              {achievement.tags.map((tag) => (
+                <span class="text-xs bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full font-medium hover:bg-primary-100 transition-colors">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <a
+              href={achievement.link}
+              class="text-primary-600 font-semibold hover:text-primary-700 transition-colors inline-flex items-center group/link mt-auto"
+            >
+              Read More
+              <ArrowRight className="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform" />
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="text-center mt-16">
+      <a
+        href={lang === "de" ? "/de/achievements" : "/achievements"}
+        class="btn-secondary-large group"
+      >
+        {t("achievements.viewAll")}
+        <ArrowRight
+          className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+        />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .blog-card {
+    @apply bg-white/80 backdrop-blur-sm p-6 lg:p-8 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-500 border border-gray-200/50 hover:border-primary-200 animate-slide-up transform hover:-translate-y-2 flex flex-col;
+  }
+
+  .btn-secondary-large {
+    @apply border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl hover:border-primary-600 hover:text-primary-600 hover:bg-primary-50 transition-all duration-300 font-semibold text-lg inline-flex items-center transform hover:scale-105 bg-white/80 backdrop-blur-sm;
+  }
+</style>

@@ -1,0 +1,44 @@
+---
+import { getLangFromUrl } from "../i18n/index.js";
+
+const lang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+
+// Remove language prefix from path for switching
+const getPathWithoutLang = (path) => {
+  const segments = path.split("/").filter(Boolean);
+  if (segments[0] === "en" || segments[0] === "de") {
+    return "/" + segments.slice(1).join("/");
+  }
+  return path;
+};
+
+const basePath = getPathWithoutLang(currentPath);
+const enPath = basePath === "/" ? "/en" : `/en${basePath}`;
+const dePath = basePath === "/" ? "/de" : `/de${basePath}`;
+---
+
+<div
+  class="flex items-center space-x-1 bg-white/80 backdrop-blur-sm rounded-lg border border-gray-200/50 p-1"
+>
+  <a
+    href={lang === "en" ? currentPath : enPath}
+    class={`px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-200 ${
+      lang === "en"
+        ? "bg-primary-600 text-white shadow-sm"
+        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+    }`}
+  >
+    EN
+  </a>
+  <a
+    href={lang === "de" ? currentPath : dePath}
+    class={`px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-200 ${
+      lang === "de"
+        ? "bg-primary-600 text-white shadow-sm"
+        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+    }`}
+  >
+    DE
+  </a>
+</div>

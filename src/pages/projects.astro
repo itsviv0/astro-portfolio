@@ -1,0 +1,181 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import {
+  ArrowRight,
+  Github,
+  ExternalLink,
+  Code,
+  Database,
+  Globe,
+  Zap,
+} from "lucide-react";
+import projects from "../data/projects.js";
+
+const categories = ["All", "AI/ML", "Backend", "Machine Learning", "Frontend"];
+---
+
+<Layout title="Projects - Vivek Sindagi">
+  <Navigation />
+
+  <main class="pt-24 pb-16">
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-br from-primary-50 to-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
+            My Projects
+          </h1>
+          <p class="text-xl text-gray-600 mb-8 animate-slide-up">
+            Real-world solutions that demonstrate expertise in full-stack
+            development and data engineering
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-8 bg-white border-b border-gray-200">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap justify-center gap-4">
+          {
+            categories.map((category) => (
+              <button class="filter-btn" data-category={category}>
+                {category}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-8">
+          {
+            projects.map((project, index) => (
+              <article
+                class="project-card"
+                data-category={project.category}
+                style={`animation-delay: ${index * 0.1}s`}
+              >
+                <div class="relative overflow-hidden rounded-lg mb-6 group">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div class="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="flex gap-2">
+                      <a href={project.github} class="btn-icon-white">
+                        <Github className="w-5 h-5" />
+                      </a>
+                      <a href={project.demo} class="btn-icon-white">
+                        <ExternalLink className="w-5 h-5" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-primary-600 bg-primary-50 px-2 py-1 rounded">
+                      {project.category}
+                    </span>
+                    <div class="flex items-center gap-2">
+                      {project.category === "Data Engineering" && (
+                        <Database className="w-4 h-4 text-gray-500" />
+                      )}
+                      {project.category === "Frontend" && (
+                        <Globe className="w-4 h-4 text-gray-500" />
+                      )}
+                      {project.category === "Backend" && (
+                        <Code className="w-4 h-4 text-gray-500" />
+                      )}
+                      {project.category === "Machine Learning" && (
+                        <Zap className="w-4 h-4 text-gray-500" />
+                      )}
+                    </div>
+                  </div>
+                  <h3 class="text-2xl font-bold mb-2 hover:text-primary-600 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p class="text-gray-600 mb-4">{project.longDescription}</p>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {project.stack.map((tech) => (
+                    <span class="text-sm bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <a href={`/projects/${project.id}`} class="btn-primary">
+                  Read Case Study
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </a>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .filter-btn {
+    @apply px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:border-primary-600 hover:text-primary-600 transition-all font-medium;
+  }
+
+  .filter-btn.active {
+    @apply bg-primary-600 text-white border-primary-600;
+  }
+
+  .project-card {
+    @apply bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary-200 animate-slide-up;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors font-medium inline-flex items-center;
+  }
+
+  .btn-icon-white {
+    @apply bg-white/20 backdrop-blur-sm text-white p-2 rounded-lg hover:bg-white/30 transition-all;
+  }
+</style>
+
+<script>
+  // Filter functionality
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const category = button.getAttribute("data-category");
+
+      // Update active button
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      // Filter projects
+      projectCards.forEach((card) => {
+        const cardCategory = card.getAttribute("data-category");
+        if (category === "All" || cardCategory === category) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+
+  // Set initial active state
+  filterButtons[0].classList.add("active");
+</script>

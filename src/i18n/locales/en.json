@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "achievements": "Achievements",
+    "contact": "Contact"
+  },
+  "hero": {
+    "available": "Available for new opportunities",
+    "greeting": "Hi, I'm",
+    "title": "Software Developer based in",
+    "location": "Bengaluru",
+    "description": "I craft robust data pipelines, scalable backend systems, and thoughtful UIs.",
+    "buttons": {
+      "viewWork": "View My Work",
+      "downloadCV": "Download CV"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "description": "Software Developer & Data Engineer based in Bengaluru. I craft robust data pipelines, scalable backend systems, and thoughtful UIs."
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "Here are some of my recent projects that showcase my skills and experience.",
+    "viewAll": "View All Projects",
+    "viewDemo": "View Demo",
+    "viewCode": "View Code"
+  },
+  "achievements": {
+    "title": "Latest Achievements",
+    "subtitle": "Recent milestones and recognitions in my professional journey.",
+    "readTime": "min read",
+    "viewAll": "View All Achievements"
+  },
+  "contact": {
+    "title": "Let's Work Together",
+    "description": "I'm always open to discussing new opportunities, interesting projects, and ways we can collaborate.",
+    "email": "Email Me",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "built": "Built with Astro & Tailwind CSS"
+  },
+  "meta": {
+    "description": "Software Developer & Data Engineer based in Bengaluru. I craft robust data pipelines, scalable backend systems, and thoughtful UIs."
+  },
+  "timeline": {
+    "experience": "Experience Timeline",
+    "journey": "My professional journey from student to engineer"
+  }
+}

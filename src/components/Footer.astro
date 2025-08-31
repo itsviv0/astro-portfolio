@@ -1,0 +1,133 @@
+---
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { getLangFromUrl, useTranslations } from "../i18n/index.js";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Helper function to get the correct path for current language
+const getLocalizedPath = (path) => {
+  if (lang === "de") {
+    return path === "/" ? "/de" : `/de${path}`;
+  }
+  return path === "/" ? "/" : path;
+};
+---
+
+<footer
+  class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20 relative overflow-hidden"
+>
+  <!-- Background decoration -->
+  <div
+    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-600 via-blue-500 to-purple-600"
+  >
+  </div>
+  <div
+    class="absolute top-10 right-10 w-64 h-64 bg-primary-600/10 rounded-full blur-3xl"
+  >
+  </div>
+  <div
+    class="absolute bottom-10 left-10 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl"
+  >
+  </div>
+
+  <div class="container mx-auto px-6 lg:px-8 relative">
+    <div class="grid lg:grid-cols-4 gap-12">
+      <div class="md:col-span-2">
+        <h3
+          class="text-3xl font-display font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+        >
+          Vivek Sindagi
+        </h3>
+        <p class="text-gray-300 mb-8 max-w-md text-lg leading-relaxed">
+          {t("about.description")}
+        </p>
+        <div class="flex space-x-3">
+          <a href="mailto:vivekganeshs12@gmail.com" class="social-link">
+            <Mail className="w-5 h-5" />
+          </a>
+          <a href="https://linkedin.com/in/vivek-g-sindagi" class="social-link">
+            <Linkedin className="w-5 h-5" />
+          </a>
+          <a href="https://github.com/itsviv0" class="social-link">
+            <Github className="w-5 h-5" />
+          </a>
+          <a href="https://twitter.com/SindagiVivek" class="social-link">
+            <Twitter className="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-6 text-white">Quick Links</h4>
+        <ul class="space-y-3 text-gray-300">
+          <li>
+            <a
+              href={getLocalizedPath("/about")}
+              class="hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
+              >{t("nav.about")}</a
+            >
+          </li>
+          <li>
+            <a
+              href={getLocalizedPath("/projects")}
+              class="hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
+              >{t("nav.projects")}</a
+            >
+          </li>
+          <li>
+            <a
+              href={getLocalizedPath("/achievements")}
+              class="hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
+              >{t("nav.achievements")}</a
+            >
+          </li>
+          <li>
+            <a
+              href={lang === "de"
+                ? "/media/vivek/viv/code/astro-portfolio/src/data/Vivek Sindagi DE.pdf"
+                : "https://firebasestorage.googleapis.com/v0/b/itsviv0.appspot.com/o/Vivek%20Sindagi%20EU.pdf?alt=media&token=9471acc9-5196-4137-a9f5-d6e4a02d97f6"}
+              class="hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
+              target="_blank"
+              rel="noopener noreferrer">{t("hero.buttons.downloadCV")}</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-6 text-white">{t("contact.title")}</h4>
+        <ul class="space-y-3 text-gray-300">
+          <li class="flex items-center gap-2">
+            <Mail className="w-4 h-4 text-primary-400" />
+            vivekganeshs12@gmail.com
+          </li>
+          <li>📍 {t("hero.location")}, India</li>
+          <li>
+            <a
+              href={getLocalizedPath("/contact")}
+              class="hover:text-primary-400 transition-all duration-300 hover:translate-x-1 inline-block"
+              >{t("contact.title")}</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="border-t border-gray-700/50 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-400"
+    >
+      <p>&copy; 2025 Vivek Sindagi. {t("footer.rights")}</p>
+      <p class="mt-4 md:mt-0 text-sm">
+        {t("footer.built")}
+        <span class="text-red-400">♥</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .social-link {
+    @apply text-gray-400 hover:text-primary-400 transition-all duration-300 p-3 rounded-xl hover:bg-gray-800/50 backdrop-blur-sm transform hover:scale-110;
+  }
+</style>

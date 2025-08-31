@@ -1,0 +1,256 @@
+---
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/index.js";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+
+// Helper function to get the correct path for current language
+const getLocalizedPath = (path) => {
+  if (lang === "de") {
+    return path === "/" ? "/de" : `/de${path}`;
+  }
+  return path === "/" ? "/" : path;
+};
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200/50 transition-all duration-300"
+  id="navbar"
+>
+  <div class="container mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between">
+      <a
+        href="/"
+        class="text-xl font-bold text-gray-900 hover:text-primary-600 transition-all duration-300 py-4"
+      >
+        Vivek Sindagi
+      </a>
+
+      <div class="hidden lg:flex items-center space-x-8">
+        <a
+          href={getLocalizedPath("/")}
+          class={`nav-link ${currentPath.endsWith("/") && (currentPath === "/" || currentPath === "/de/") ? "active" : ""}`}
+          >{t("nav.home")}</a
+        >
+        <a
+          href={getLocalizedPath("/about")}
+          class={`nav-link ${currentPath.includes("/about") ? "active" : ""}`}
+          >{t("nav.about")}</a
+        >
+        <a
+          href={getLocalizedPath("/projects")}
+          class={`nav-link ${currentPath.includes("/projects") ? "active" : ""}`}
+          >{t("nav.projects")}</a
+        >
+        <a
+          href={getLocalizedPath("/achievements")}
+          class={`nav-link ${currentPath.includes("/achievements") ? "active" : ""}`}
+          >{t("nav.achievements")}</a
+        >
+      </div>
+
+      <div
+        class="hidden md:flex items-center space-x-3 transition-all duration-300"
+        id="nav-buttons"
+      >
+        <a
+          href={lang === "de"
+            ? "https://firebasestorage.googleapis.com/v0/b/itsviv0.appspot.com/o/Vivek%20Sindagi%20DE.pdf?alt=media&token=73711226-5b10-49b6-9737-8dd9a383594a"
+            : "https://firebasestorage.googleapis.com/v0/b/itsviv0.appspot.com/o/Vivek%20Sindagi%20EU.pdf?alt=media&token=9471acc9-5196-4137-a9f5-d6e4a02d97f6"}
+          class="btn-secondary py-4"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t("hero.buttons.downloadCV")}
+        </a>
+        <a href={getLocalizedPath("/contact")} class="btn-primary py-4"
+          >{t("contact.title")}</a
+        >
+      </div>
+      <LanguageSwitcher />
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-button"
+        class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+      >
+        <svg
+          class="w-6 h-6 transition-transform duration-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          id="menu-icon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg
+          class="w-6 h-6 hidden transition-transform duration-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          id="close-icon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div
+      id="mobile-menu"
+      class="hidden lg:hidden overflow-hidden transition-all duration-300 ease-in-out"
+    >
+      <div class="py-4 border-t border-gray-200/50">
+        <div class="flex flex-col space-y-1">
+          <a href={getLocalizedPath("/")} class="mobile-nav-link"
+            >{t("nav.home")}</a
+          >
+          <a href={getLocalizedPath("/about")} class="mobile-nav-link"
+            >{t("nav.about")}</a
+          >
+          <a href={getLocalizedPath("/projects")} class="mobile-nav-link"
+            >{t("nav.projects")}</a
+          >
+          <a href={getLocalizedPath("/achievements")} class="mobile-nav-link"
+            >{t("nav.achievements")}</a
+          >
+        </div>
+        <div
+          class="flex flex-col space-y-2 mt-4 pt-4 border-t border-gray-200/50"
+        >
+          <div class="flex justify-center mb-2">
+            <LanguageSwitcher />
+          </div>
+          <a
+            href={lang === "de"
+              ? "https://firebasestorage.googleapis.com/v0/b/itsviv0.appspot.com/o/Vivek%20Sindagi%20DE.pdf?alt=media&token=73711226-5b10-49b6-9737-8dd9a383594a"
+              : "https://firebasestorage.googleapis.com/v0/b/itsviv0.appspot.com/o/Vivek%20Sindagi%20EU.pdf?alt=media&token=9471acc9-5196-4137-a9f5-d6e4a02d97f6"}
+            class="btn-secondary-mobile"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t("hero.buttons.downloadCV")}
+          </a>
+          <a href={getLocalizedPath("/contact")} class="btn-primary-mobile"
+            >{t("contact.title")}</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav-link {
+    @apply text-gray-600 hover:text-primary-600 transition-all duration-300 font-medium py-2 px-1 relative;
+  }
+
+  .nav-link::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .nav-link.active {
+    @apply text-primary-600 font-semibold;
+  }
+
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  .mobile-nav-link {
+    @apply text-gray-600 hover:text-primary-600 hover:bg-primary-50 transition-all duration-300 font-medium py-3 px-4 rounded-lg;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white px-6 py-2.5 rounded-lg hover:bg-primary-700 hover:shadow-lg hover:scale-105 transition-all duration-300 font-medium;
+  }
+
+  .btn-secondary {
+    @apply text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-4 py-2.5 rounded-lg transition-all duration-300 font-medium;
+  }
+
+  .btn-primary-mobile {
+    @apply bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-all duration-300 font-medium text-center;
+  }
+
+  .btn-secondary-mobile {
+    @apply border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:border-primary-600 hover:text-primary-600 transition-all duration-300 font-medium text-center;
+  }
+</style>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+  const navbar = document.getElementById("navbar");
+
+  mobileMenuButton?.addEventListener("click", () => {
+    const isHidden = mobileMenu?.classList.contains("hidden");
+
+    if (isHidden) {
+      mobileMenu?.classList.remove("hidden");
+      menuIcon?.classList.add("hidden");
+      closeIcon?.classList.remove("hidden");
+    } else {
+      mobileMenu?.classList.add("hidden");
+      menuIcon?.classList.remove("hidden");
+      closeIcon?.classList.add("hidden");
+    }
+  });
+
+  // Navbar scroll effect
+  let lastScrollY = window.scrollY;
+  const navButtons = document.getElementById("nav-buttons");
+
+  // Initially hide buttons if at top of page
+  if (window.scrollY <= 50) {
+    navButtons?.style.setProperty("opacity", "0");
+    navButtons?.style.setProperty("visibility", "hidden");
+    navButtons?.style.setProperty("transform", "translateY(-10px)");
+  }
+
+  window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
+
+    // Navbar background effect
+    if (currentScrollY > 50) {
+      navbar?.classList.add("bg-gray-50/95");
+      navbar?.classList.remove("bg-white/90");
+    } else {
+      navbar?.classList.add("bg-white/90");
+      navbar?.classList.remove("bg-gray-50/95");
+    }
+
+    // Button visibility effect
+    if (currentScrollY > 50) {
+      // Show buttons when scrolled down
+      navButtons?.style.setProperty("opacity", "1");
+      navButtons?.style.setProperty("visibility", "visible");
+      navButtons?.style.setProperty("transform", "translateY(0)");
+    } else {
+      // Hide buttons when at top
+      navButtons?.style.setProperty("opacity", "0");
+      navButtons?.style.setProperty("visibility", "hidden");
+      navButtons?.style.setProperty("transform", "translateY(-10px)");
+    }
+
+    lastScrollY = currentScrollY;
+  });
+</script>

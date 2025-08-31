@@ -1,0 +1,81 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import timeline from "../data/experience.js";
+---
+
+<Layout title="About - Vivek Sindagi">
+  <Navigation />
+
+  <main class="pt-24 pb-16">
+    <!-- Story Timeline -->
+    <section class="py-8 bg-white">
+      <div class="container mx-auto px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <h2
+            class="text-2xl md:text-3xl font-display font-bold mb-16 text-center"
+          >
+            My Journey
+          </h2>
+
+          <div class="relative">
+            <!-- Timeline line -->
+            <div
+              class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-200 via-primary-300 to-primary-200"
+            >
+            </div>
+
+            <div class="space-y-16">
+              {
+                timeline.map((item) => (
+                  <div class="timeline-item">
+                    <div class="timeline-marker">{item.emoji}</div>
+                    <div class="timeline-content">
+                      <h3 class="text-2xl font-bold mb-3 text-gray-900">
+                        {item.title} ({item.period})
+                      </h3>
+                      <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        {item.description}
+                      </p>
+                      <div class="flex flex-wrap gap-2">
+                        {item.skills.map((skill) => (
+                          <span class="skill-tag">{skill}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .timeline-item {
+    @apply relative flex items-start gap-8 animate-slide-up;
+  }
+
+  .timeline-marker {
+    @apply w-16 h-16 rounded-full bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center text-2xl font-bold flex-shrink-0 relative z-10 shadow-lg;
+  }
+
+  .timeline-content {
+    @apply flex-1 pb-12;
+  }
+
+  .skill-tag {
+    @apply text-sm bg-primary-50 text-primary-700 px-3 py-1.5 rounded-full font-medium hover:bg-primary-100 transition-colors;
+  }
+
+  .bg-grid-pattern {
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+</style>
